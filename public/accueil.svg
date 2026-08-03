@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="Bienvenue sur TaskManager, organisez vos taches efficacement">
+
+  <defs>
+    <filter id="ombreFenetre" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.13"/>
+    </filter>
+    <linearGradient id="fondPage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7faff"/>
+      <stop offset="100%" stop-color="#e8f0fc"/>
+    </linearGradient>
+    <clipPath id="coinsFenetre">
+      <rect x="90" y="160" width="720" height="400" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="620" fill="url(#fondPage)"/>
+
+  <text x="450" y="76" text-anchor="middle"
+        font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+        font-size="42" font-weight="700" fill="#0f172a" letter-spacing="-0.6">
+    Bienvenue sur TaskManager
+  </text>
+  <text x="450" y="118" text-anchor="middle"
+        font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+        font-size="19" font-weight="400" fill="#64748b">
+    Organisez vos tâches efficacement.
+  </text>
+
+  <g filter="url(#ombreFenetre)">
+    <rect x="90" y="160" width="720" height="400" rx="16" fill="#ffffff"/>
+  </g>
+
+  <g clip-path="url(#coinsFenetre)">
+    <rect x="90" y="160" width="720" height="54" fill="#2563eb"/>
+  </g>
+  <text x="118" y="194"
+        font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+        font-size="18" font-weight="700" fill="#ffffff">TaskManager</text>
+  <text x="782" y="193" text-anchor="end"
+        font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+        font-size="13" font-weight="400" fill="#dbeafe">Accueil    Tâches    Déconnexion</text>
+
+  <text x="118" y="248"
+        font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#334155">Mes tâches</text>
+  <text x="782" y="248" text-anchor="end"
+        font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+        font-size="13" font-weight="600" fill="#2563eb">+ Nouvelle tâche</text>
+
+  <g>
+    <rect x="118" y="268" width="664" height="82" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="136" y="286" width="74" height="22" rx="11" fill="#dcfce7"/>
+    <text x="173" y="301" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="11" font-weight="600" fill="#15803d">Terminée</text>
+    <text x="224" y="302"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="17" font-weight="600" fill="#94a3b8">Apprendre React</text>
+    <line x1="222" y1="296" x2="358" y2="296" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="136" y="330"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="13" fill="#94a3b8">Composants, props et état</text>
+    <rect x="686" y="283" width="78" height="28" rx="6" fill="#f1f5f9"/>
+    <text x="725" y="302" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="12" font-weight="600" fill="#64748b">Modifier</text>
+  </g>
+
+  <g>
+    <rect x="118" y="362" width="664" height="82" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="136" y="380" width="60" height="22" rx="11" fill="#fef3c7"/>
+    <text x="166" y="395" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="11" font-weight="600" fill="#b45309">À faire</text>
+    <text x="210" y="396"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="17" font-weight="600" fill="#0f172a">Créer mon application</text>
+    <text x="136" y="424"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="13" fill="#94a3b8">Ajouter, modifier et supprimer une tâche</text>
+    <rect x="592" y="377" width="84" height="28" rx="6" fill="#16a34a"/>
+    <text x="634" y="396" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="12" font-weight="600" fill="#ffffff">Terminer</text>
+    <rect x="686" y="377" width="78" height="28" rx="6" fill="#f1f5f9"/>
+    <text x="725" y="396" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="12" font-weight="600" fill="#64748b">Modifier</text>
+  </g>
+
+  <g>
+    <rect x="118" y="456" width="664" height="82" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="136" y="474" width="60" height="22" rx="11" fill="#fef3c7"/>
+    <text x="166" y="489" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="11" font-weight="600" fill="#b45309">À faire</text>
+    <text x="210" y="490"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="17" font-weight="600" fill="#0f172a">Mettre le projet en ligne</text>
+    <text x="136" y="518"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="13" fill="#94a3b8">Déploiement et mise en production</text>
+    <rect x="592" y="471" width="84" height="28" rx="6" fill="#16a34a"/>
+    <text x="634" y="490" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="12" font-weight="600" fill="#ffffff">Terminer</text>
+    <rect x="686" y="471" width="78" height="28" rx="6" fill="#f1f5f9"/>
+    <text x="725" y="490" text-anchor="middle"
+          font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif"
+          font-size="12" font-weight="600" fill="#64748b">Modifier</text>
+  </g>
+
+</svg>
