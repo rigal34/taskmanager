@@ -1,21 +1,36 @@
+import { Route,Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Registeur from "./pages/Register";
+import Tasks from "./pages/Tasks";
+import CreatTask from "./pages/CreateTask";
+import EditTask from "./pages/EditTask";
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header></Header>
       <main className="flex-1 max-w-4xl mx-auto p-4">
-        <img
-          src="/accueil.svg"
-          alt="Bienvenue sur TaskManager"
-          style={{
-            display: "block",
-            margin: "auto",
-            width: "100%",
-            maxWidth: "820px",
-          }}
-        />
+        <Routes>
+
+          <Route path="/" element={<Home/>}/>
+
+          <Route path="/login" element={<Login/>}/>
+
+          <Route path="/register" element={<Registeur />}/>
+
+          <Route path="/tasks" element={<Tasks />}/>
+
+          <Route path="/create" element={<CreatTask />}/>
+
+          <Route path="/edit" element={<EditTask/>}/>
+          
+          <Route path="*" element={<p>Page introuvable</p>}/>
+
+        </Routes>
+       
       </main>
       <Footer></Footer>
     </div>

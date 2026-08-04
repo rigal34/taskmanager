@@ -2,7 +2,10 @@
 
 const croissant = () =>{
     
-    const tableau  = [17	,13	,31,	3,	46
+    const tableau  = [29	24	4	46	7
+
+
+
     ];
 
 const trier = tableau.sort((a,b) => a - b);

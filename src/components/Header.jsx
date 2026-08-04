@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -6,13 +6,22 @@ function Header() {
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">TaskManager</h1>
         <nav>
-          <a className="mr-4" href="index.html">
+          <Link className="mr-4" to="/">
             Accueil
-          </a>
-          <a className="mr-4" href="tasks.html">
+          </Link>
+          <Link className="mr-4" to="/tasks">
             Tâches
-          </a>
+          </Link>
+          <Link className="mr-4" to="/login">
+            Connexion
+          </Link>
+          
+          <Link className="mr-4" to="/register">
+            Inscription
+          </Link>
+
           <button className="underline">Déconnexion</button>
+
         </nav>
       </div>
     </header>
