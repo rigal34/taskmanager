@@ -345,3 +345,242 @@ Fait :
 - Branchement de l'API
 - Installation propre de Tailwind avant la mise en ligne
 
+# TaskManager
+
+Application de gestion de tâches construite en React.
+
+## Fonctionnalités visées
+
+- Liste des tâches avec un statut (À faire / Terminée)
+- Titre et description pour chaque tâche
+- Créer, modifier, terminer et supprimer une tâche
+- Page dédiée à la modification d'une tâche
+- Connexion et inscription
+- Enregistrement des tâches via une API
+
+## Stack technique
+
+| Élément | Choix | Raison |
+|---|---|---|
+| Outil de build | Vite | Serveur de développement rapide, rechargement à chaud |
+| Bibliothèque | React | Cœur du projet |
+| Langage | JavaScript | Pas de TypeScript, pour rester sur l'essentiel |
+| Navigation | react-router-dom | Navigation entre pages sans rechargement |
+| Linter | ESLint | Standard du métier, préféré à Oxlint |
+| CSS | Tailwind via CDN | Balise script dans `index.html` |
+| Formatage | Prettier | Format à l'enregistrement |
+
+## Installation
+
+    npm install
+    npm run dev
+
+Ouvrir l'adresse annoncée par le terminal — pas 5173 de mémoire, elle
+change si un autre serveur occupe déjà le port.
+
+## Structure
+
+    taskmanager/
+    ├── public/                  fichiers servis tels quels
+    │   ├── favicon.svg
+    │   ├── icons.svg
+    │   └── accueil.svg          illustration de la page d'accueil
+    ├── src/
+    │   ├── assets/              images importées par le code
+    │   ├── components/          morceaux réutilisés sur toutes les pages
+    │   │   ├── Header.jsx
+    │   │   └── Footer.jsx
+    │   ├── pages/               un fichier par écran
+    │   │   ├── Home.jsx
+    │   │   ├── Login.jsx
+    │   │   ├── Register.jsx
+    │   │   ├── Tasks.jsx
+    │   │   ├── CreateTask.jsx
+    │   │   └── EditTask.jsx
+    │   ├── exos/                brouillons d'entraînement (ignoré par git)
+    │   ├── App.jsx              structure de la page et table des routes
+    │   ├── index.css            styles globaux
+    │   └── main.jsx             point d'entrée, enveloppes globales
+    ├── index.html               unique page HTML
+    └── .gitignore
+
+`components/` contient ce qui apparaît sur plusieurs écrans,
+`pages/` contient les écrans eux-mêmes.
+
+## Chaîne d'affichage
+
+1. Le navigateur charge `index.html`
+2. Il y trouve une `<div id="root">` vide
+3. Il exécute `src/main.jsx`, qui importe `index.css` et enveloppe
+   `<App />` dans `<BrowserRouter>`
+4. `App` construit la page et laisse le routeur remplir le centre
+
+## Navigation
+
+### Les trois pièces
+
+| Pièce | Rôle | Où |
+|---|---|---|
+| `BrowserRouter` | Surveille l'adresse du navigateur | `main.jsx` |
+| `Routes` | Choisit la route qui correspond | `App.jsx`, dans le `<main>` |
+| `Route` | Une adresse et son composant | dans `Routes` |
+
+`BrowserRouter` est dans `main.jsx` pour que l'application entière soit
+à l'intérieur du routeur.
+
+### Table des routes
+
+| Adresse | Composant |
+|---|---|
+| `/` | Home |
+| `/login` | Login |
+| `/register` | Register |
+| `/tasks` | Tasks |
+| `/create` | CreateTask |
+| `/edit` | EditTask |
+| `*` | message « Page introuvable » |
+
+La route `*` répond à toute adresse inconnue. Elle est placée **en
+dernier**, car `Routes` retient la première qui correspond.
+
+Sans elle, une adresse erronée n'affiche rien du tout — ni erreur,
+ni message. C'est le piège du routeur.
+
+### Liens
+
+`Route` doit vivre dans `Routes`. `Link` fonctionne partout dans
+l'application. Le Header dit « voici les portes », les Routes disent
+« voici ce qu'il y a derrière chaque porte ».
+
+`Link` quand l'élément change d'adresse, `button` quand il déclenche
+une action — la déconnexion est donc un bouton.
+
+## Formulaires
+
+### Le champ contrôlé
+
+    const [email, setEmail] = useState("");
+
+    <input
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+
+C'est un aller-retour : l'état commande le champ par `value`, le champ
+commande l'état par `onChange`. Sans le retour, React verrouille le
+champ en lecture seule.
+
+`e.target` est l'élément qui a déclenché l'événement, `.value` son
+contenu actuel.
+
+### L'envoi
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      ...
+    };
+
+`preventDefault` est indispensable : sans elle, le comportement natif
+du formulaire recharge la page et remet toute l'application à zéro.
+
+`onSubmit` est posé sur le `<form>` et non sur le bouton, pour que la
+touche Entrée fonctionne aussi.
+
+### Les attributs `type`
+
+Deux attributs sans rapport, même nom :
+
+- sur un `<input>` : la sorte de donnée attendue (`email`, `password`)
+- sur un `<button>` : ce qu'il fait dans le formulaire (`submit`, `button`)
+
+`type="password"` est indispensable, il masque les caractères.
+Les autres sont écrits explicitement par discipline, pour ne pas
+oublier `type="button"` le jour où un second bouton apparaîtra.
+
+## Affichage conditionnel
+
+| Forme | Où | Effet |
+|---|---|---|
+| `if (…) { }` | dans une fonction | empêche une action |
+| `{a ? b : c}` | dans le JSX | affiche ceci ou cela |
+| `{a && b}` | dans le JSX | affiche ceci ou rien |
+
+Exemple utilisé dans Login :
+
+    {error && <p className="error-form">Identifiants invalides</p>}
+
+## Mise en page
+
+`App.jsx` enveloppe le tout dans `flex flex-col min-h-screen`.
+Avec le `flex-1` du `<main>` et le `mt-auto` du footer, le pied de page
+reste collé en bas même quand la page est peu remplie.
+
+### Piège rencontré
+
+Le `<main>` était déclaré `flex-1 max-w-4xl mx-auto p-4` et se rétractait
+sur son contenu : 820 px sur l'accueil, 266 px sur l'inscription, avec
+les mêmes classes.
+
+Cause : sur un élément flex, `mx-auto` annule l'étirement
+(`align-items: stretch`). Sans largeur explicite, l'élément se replie
+sur `fit-content`.
+
+Correctif : ajouter `w-full`. Pour obtenir un bloc **centré et à sa
+largeur maximale**, il faut les trois classes ensemble :
+
+    w-full max-w-4xl mx-auto
+
+## Conventions du projet
+
+- Un composant = un fichier
+- `className` et non `class`
+- Styles en ligne sous forme d'objet : `style={{ margin: "auto" }}`
+- Propriétés CSS en casse chameau : `maxWidth`
+- Balises solitaires fermées : `<img />`, `<Route />`
+- `margin: auto` ne centre que si l'élément est en `display: block` :
+  une `<img>` et un `<input>` sont en ligne par défaut
+- `gap` sur un conteneur flex espace ses enfants directs
+- Console du navigateur maintenue vide de tout avertissement
+
+## Styles
+
+`index.css` est la feuille globale, importée une seule fois dans
+`main.jsx`. Elle contient les règles de formulaire et la classe
+`.error-form`.
+
+Attention : sur les champs, les classes Tailwind l'emportent sur les
+règles `form input` — une classe prime sur un sélecteur d'élément.
+
+## Modifications apportées au modèle de départ
+
+- `App.css`, `react.svg`, `Header.css` et `Footer.css` supprimés
+- `index.css` vidé puis rempli des règles du cours
+- `index.html` : langue `fr`, titre TaskManager, script Tailwind
+- Les `<a href="tasks.html">` du Header remplacés par des `<Link to>`
+
+## État d'avancement
+
+Fait :
+- Projet créé, configuré, versionné et publié sur GitHub
+- Header, Footer, illustration d'accueil
+- Navigation complète : six routes plus l'attrape-tout
+- Formulaire d'inscription, champs contrôlés
+- Formulaire de connexion, avec message d'erreur conditionnel
+- Première carte de tâche, écrite en dur
+
+À faire :
+- Remplacer la carte en dur par une liste construite avec `map`
+- Formulaire de création d'une tâche
+- Modification et suppression
+- Vérification des identifiants, branchement de `setError`
+- Branchement de l'API
+- Installation propre de Tailwind avant la mise en ligne
+
+## Refonte prévue après le cours
+
+Remplacer les règles de `index.css` par des composants réutilisables,
+à commencer par un `<Champ />` portant les classes une seule fois.
+Ces règles sont déjà largement écrasées par Tailwind : le changement
+sera à faible risque.
+
+

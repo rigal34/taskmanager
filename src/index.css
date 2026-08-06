@@ -1,0 +1,32 @@
+header,
+footer {
+  padding: 1em;
+}
+
+nav a {
+  color: white;
+  margin-right: 1em;
+  text-decoration: none;
+}
+
+form input,
+form button,
+form textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+}
+
+form button {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+.error-form {
+  color: #dc2626;
+  margin-top: 10px;
+}
