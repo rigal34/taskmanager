@@ -1,17 +1,20 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if(!email || !password){
       return;
     }
-    axios.post()
-    console.log(email, password);
+   await axios.post("http://localhost:3000/register",{email, password})
+   navigate("/login");
+    
   };
 
   return (

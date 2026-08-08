@@ -1,5 +1,31 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "bruno@gmail.com",
+      "password": "$2a$10$BHFw6y0i3LautE8FiLnlNernwGX4KjmUplEvKua0vc/rjIrqhF752",
+      "id": 1
+    },
+    {
+      "email": "nono@gmail.com",
+      "password": "$2a$10$JiSYEmmMioluULdjHhsHB./WrWtwRLfECEv9dzuY3r7Xgug/gTCie",
+      "id": 2
+    },
+    {
+      "email": "test123@test.fr",
+      "password": "$2a$10$fIuyqsmqtpXRJYWH5Y6.EOPkPk/24xmfihMFZ8.Ji.IYuURcyG4Aq",
+      "id": 3
+    },
+    {
+      "email": "brunoTeste@gmail.com",
+      "password": "$2a$10$dbggTz1GJCKmOsYO6iQzROYRrdanl2nihszXThkIPhaR2QFlVq8wy",
+      "id": 4
+    },
+    {
+      "email": "rigal@gmail.com",
+      "password": "$2a$10$A7N8hWP7XNXzv7QNwjuiFu3W9cmEiIkAy/HPIPGUpRQ51rR6PG6xW",
+      "id": 5
+    }
+  ],
   "tasks": [
     {
       "id": 1,

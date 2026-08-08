@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({ token, setToken }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    navigate("/login");
+  };
   return (
     <header className="bg-blue-600 text-white p-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -9,19 +16,28 @@ function Header() {
           <Link className="mr-4" to="/">
             Accueil
           </Link>
-          <Link className="mr-4" to="/tasks">
-            Tâches
-          </Link>
-          <Link className="mr-4" to="/login">
-            Connexion
-          </Link>
-          
-          <Link className="mr-4" to="/register">
-            Inscription
-          </Link>
+          {token && (
+            <Link className="mr-4" to="/tasks">
+              Tâches
+            </Link>
+          )}
+          {!token && (
+            <Link className="mr-4" to="/login">
+              Connexion
+            </Link>
+          )}
 
-          <button className="underline">Déconnexion</button>
+          {!token && (
+            <Link className="mr-4" to="/register">
+              Inscription
+            </Link>
+          )}
 
+          {token && (
+            <button className="underline" onClick={handleLogout}>
+              Déconnexion
+            </button>
+          )}
         </nav>
       </div>
     </header>
