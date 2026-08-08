@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function Register() {
@@ -6,6 +7,10 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(!email || !password){
+      return;
+    }
+    axios.post()
     console.log(email, password);
   };
 
@@ -16,14 +21,14 @@ export default function Register() {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)} required
         className="block w-full mb-3 p-3 border border-gray-300 rounded"
       />
       <input
         type="password"
         placeholder="Mot de passe"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)} required
         className="block w-full mb-3 p-3 border border-gray-300 rounded"
       />
       <button

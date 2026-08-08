@@ -1,0 +1,26 @@
+{
+  "users": [],
+  "tasks": [
+    {
+      "id": 1,
+      "titre": "Apprendre à utiliser React",
+      "description": "Bases de React + React avancé",
+      "terminee": false,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "titre": "Installer VS Code",
+      "description": "Et le configurer",
+      "terminee": true,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "titre": "Faire une application de tâches",
+      "description": "En React bien évidemment",
+      "terminee": false,
+      "userId": 1
+    }
+  ]
+}
