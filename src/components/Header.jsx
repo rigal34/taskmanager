@@ -1,13 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function Header({ token, setToken }) {
+function Header({ jeton, changeJeton }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setToken(null);
+    changeJeton(null);
     navigate("/login");
   };
+
   return (
     <header className="bg-blue-600 text-white p-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -16,24 +17,26 @@ function Header({ token, setToken }) {
           <Link className="mr-4" to="/">
             Accueil
           </Link>
-          {token && (
+
+          {jeton && (
             <Link className="mr-4" to="/tasks">
               Tâches
             </Link>
           )}
-          {!token && (
+
+          {!jeton && (
             <Link className="mr-4" to="/login">
               Connexion
             </Link>
           )}
 
-          {!token && (
+          {!jeton && (
             <Link className="mr-4" to="/register">
               Inscription
             </Link>
           )}
 
-          {token && (
+          {jeton && (
             <button className="underline" onClick={handleLogout}>
               Déconnexion
             </button>

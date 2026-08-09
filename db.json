@@ -24,6 +24,11 @@
       "email": "rigal@gmail.com",
       "password": "$2a$10$A7N8hWP7XNXzv7QNwjuiFu3W9cmEiIkAy/HPIPGUpRQ51rR6PG6xW",
       "id": 5
+    },
+    {
+      "email": "langue@gmail.com",
+      "password": "$2a$10$XzAJa75qSCC.bDH.vZ8jXOqw7jEjaeZ2PrmhPA/eZOQJqI1hoGMIy",
+      "id": 6
     }
   ],
   "tasks": [

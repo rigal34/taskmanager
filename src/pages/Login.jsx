@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Login({ setToken }) {
+export default function Login({ changeJeton }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -18,7 +18,7 @@ export default function Login({ setToken }) {
         password,
       });
       localStorage.setItem("token", result.data.accessToken);
-      setToken(result.data.accessToken);
+      changeJeton(result.data.accessToken);
       navigate("/tasks");
     } catch (err) {
       if (err.response?.status === 400) setError(true);
